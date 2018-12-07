@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, SafeAreaView } from 'react-native';
+import { connect } from 'react-redux'
 
-
-export default class HomeScreen extends Component {
+class HomeScreen extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>home</Text>
-        <Button
-          title="Go to Settings"
-          onPress={() => this.props.navigation.navigate('Settings')}
-        />
-      </View>
+      <SafeAreaView style={styles.container}>
+        <View>
+          <Text style={styles.welcome}>home</Text>
+          <Button
+            title="Go to Settings"
+            onPress={() => this.props.navigation.navigate('Settings')}
+          />
+        </View>
+      </SafeAreaView>
     );
   }
 }
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fff',
   },
   welcome: {
     fontSize: 20,
@@ -34,3 +36,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+function mapStateToProps(state) {
+  return state
+}
+
+export default connect(mapStateToProps)(HomeScreen)
